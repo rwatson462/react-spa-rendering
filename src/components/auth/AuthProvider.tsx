@@ -4,13 +4,21 @@ import { authContext } from "./authContext";
 
 function getUserFromSessionStorage(): User|undefined {
   const storedUser = sessionStorage.getItem("user");
-  return storedUser ? JSON.parse(storedUser) : undefined
+  try {
+    return JSON.parse(storedUser!) ?? undefined;
+  } catch (e) {
+    console.log(e)
+    return undefined
+  }
 }
 
 function setUserInSessionStorage(user?: User) {
-  sessionStorage.setItem("user", JSON.stringify(user));
+  if (user === undefined) {
+    sessionStorage.removeItem('user')
+  } else {
+    sessionStorage.setItem('user', JSON.stringify(user));
+  }
 }
-
 
 export function AuthProvider({children}: PropsWithChildren) {
   const [user, setUser] = useState<User | undefined>(getUserFromSessionStorage());
