@@ -28,6 +28,7 @@ export function LogInPage() {
 
   return (
     <form onSubmit={doLogin} className={'m-4 p-4 rounded border max-w-lg flex flex-col gap-2'}>
+      <p className={'text-sm text-gray-500'}>(try <code className={'font-semibold'}>user@example.com</code> and <code className={'font-semibold'}>password</code>)</p>
       <input type={'email'} name={'email'} placeholder={'Email address'} autoComplete={'email'} className={'px-1 rounded border'}/>
       <input type={'password'} name={'password'} placeholder={'Password'} autoComplete={'current-password'} className={'px-1 rounded border'}/>
       <button type={'submit'} className={'px-1 rounded shadow border border-blue-500 bg-blue-100 hover:bg-blue-50 transition-all'}>Log in</button>
