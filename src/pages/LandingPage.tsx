@@ -3,13 +3,13 @@ import {useRouter} from "../components/router/useRouter.ts";
 
 export function LandingPage() {
   const { navigateTo } = useRouter()
-  const { logout } = useAuth()
+  const { logout, isLoggedIn } = useAuth()
 
   return (
     <main className={'p-2 space-y-4'}>
       <p>Hello, motherfuckers</p>
       <p><button onClick={() => navigateTo('/students')}>Students</button></p>
-      <p><button onClick={logout}>Log out</button></p>
+      { isLoggedIn && <p><button onClick={logout}>Log out</button></p> }
     </main>
   )
 }
